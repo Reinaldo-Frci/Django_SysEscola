@@ -1,0 +1,21 @@
+{% extends "alunos/layout.html" %}
+
+{% block body %}
+
+<datalist id="cursos">
+    {% for curso in cursos %}
+    <option value="{{ curso.nome }}"></option>
+    {% endfor %}
+</datalist>
+<h1>Preencha os dados de matrícula</h1>
+<form action="{% url 'matricula' %}"method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Nome" name="nome">
+    <input type="text" placeholder="Idade" name="idade">
+    <input list="cursos"  name="curso">
+    <button action="submit">Enviar</button>
+</form>
+
+<a href="{% url 'lista_alunos' %}">Voltar</a>
+
+{% endblock %}
