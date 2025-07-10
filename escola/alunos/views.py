@@ -6,7 +6,8 @@ from . import models
 def lista_alunos(request):
     alunos = models.Aluno.objects.all()
     cursos = models.Curso.objects.all()
-    return render(request, 'alunos/lista.html', {'alunos' : alunos , 'cursos' : cursos})
+    numalunos = len(models.Aluno.objects.all())
+    return render(request, 'alunos/lista.html', {'alunos' : alunos , 'cursos' : cursos, 'num' : numalunos})
 
 def matricular(request):
     if request.method == "POST":
