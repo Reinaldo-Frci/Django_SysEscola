@@ -15,4 +15,4 @@ def matricular(request):
         return HttpResponseRedirect(reverse("lista_alunos"))
     alunos = models.Aluno.objects.all()
     cursos = models.Curso.objects.all()
-    return render(request, 'alunos/matricula.html', {'alunos' : alunos , 'cursos' : cursos})
+    return render(request, 'alunos/matricula.html', {'alunos' : alunos , 'cursos' : cursos, 'numalunos': str(len(alunos)),})
